@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Achilles : A fully featured EntityManger for Cassandra" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Achilles</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/doanduyhai/Achilles">View on GitHub</a>
+
+          <h1 id="project_title">Achilles</h1>
+          <h2 id="project_tagline">A fully featured EntityManger for Cassandra</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/doanduyhai/Achilles/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/doanduyhai/Achilles/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Achilles</h1>
+
+<h1>Presentation</h1>
+
+<p>Achilles is an open source Entity Manager for Apache Cassandra. Among all the features:</p>
+
+<ul>
+<li>Dirty check for simple and collection/map type properties</li>
+<li>Lazy loading </li>
+<li>Collections and map support</li>
+<li>Native wide row mapping with dedicated annotations</li>
+<li>Support for Cassandra wide rows mapping inside entities</li>
+<li>Support for multi components column name with wide row</li>
+<li>Join columns with cascading support</li>
+</ul><h1>Installation</h1>
+
+<p>To use <strong>Achilles</strong>, just add the following dependency in your <strong>pom.xml</strong>:</p>
+
+<pre><code>&lt;dependency&gt;    
+    &lt;groupId&gt;info.archinnov&lt;/groupId&gt;
+    &lt;artifactId&gt;achilles&lt;/artifactId&gt;
+    &lt;version&gt;1.2-beta&lt;/version&gt;
+&lt;/dependency&gt;  
+</code></pre>
+
+<p>The framework has been released on <strong>Sonatype OSS</strong> repository so make sure you have the following
+ entry in your <strong>pom.xml</strong>:</p>
+
+<pre><code>&lt;repository&gt;
+    &lt;id&gt;Sonatype&lt;/id&gt;
+    &lt;name&gt;oss.sonatype.org&lt;/name&gt;
+    &lt;url&gt;http://oss.sonatype.org&lt;/url&gt;
+&lt;/repository&gt;
+</code></pre>
+
+<p>For now, <strong>Achilles</strong> depends on the following libraries:</p>
+
+<ol>
+<li>Cassandra 1.2.0</li>
+<li>Hector-core 1.1-2 ( <strong>Achilles</strong> ThriftEntityManager is built upon Hector API)</li>
+<li>CGLIB nodep 2.2.2 for proxy building</li>
+<li>Persistence-api 1.0.2</li>
+<li>Jackson asl, mapper &amp; xc 1.9.3 </li>
+</ol><h1>Documentation</h1>
+
+<ol>
+<li><a href="/documentation/quickTuto.markdown">5 minutes tutorial</a></li>
+<li><a href="/documentation/annotations.markdown">JPA and custom annotations for bean mapping</a></li>
+<li><a href="/documentation/emOperations.markdown">Supported operations for EntityManager</a></li>
+<li><a href="/documentation/collectionsAndMaps.markdown">Collections and Map</a></li>
+<li><a href="/documentation/dirtyCheck.markdown">Dirty check</a></li>
+<li><a href="/documentation/wideMapAPI.markdown">WideMap API</a></li>
+<li><a href="/documentation/internalWideMap.markdown">Internal WideMap</a></li>
+<li><a href="/documentation/externalWideMap.markdown">External WideMap</a></li>
+<li><a href="/documentation/cfDirectMapping.markdown">Direct Column Family Mapping</a></li>
+<li><a href="/documentation/multiComponentKey.markdown">Multi components for wide row</a></li>
+<li><a href="/documentation/joinColumns.markdown">Join columns</a></li>
+<li><a href="/documentation/manualCFCreation.markdown">Manual Column Family Creation</a></li>
+<li><a href="/documentation/jsonSerialization.markdown">JSON Serialization</a></li>
+<li><a href="/documentation/performance.markdown">Performance</a></li>
+<li>[Dealing with proxy objects]</li>
+<li><a href="/documentation/faqs.markdown">FAQs</a></li>
+</ol><h1>License</h1>
+
+<p>Copyright 2012 DuyHai DOAN</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this application except in compliance with the License. You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Achilles maintained by <a href="https://github.com/doanduyhai">doanduyhai</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
