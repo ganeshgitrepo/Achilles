@@ -112,13 +112,6 @@ public class ThriftCompoundKeyValidator
 
         for (int i = 0; i <= Math.min(indexStart, indexEnd); i++)
         {
-
-            //            @SuppressWarnings("unchecked")
-            //            Comparable<Object> startValue = (Comparable<Object>) startComponentValues
-            //                    .get(i);
-            //            Object endValue = endComponentValues.get(i);
-
-            //int comparisonResult = startValue.compareTo(endValue);
             Object startValue = startComponentValues.get(i);
             Object endValue = endComponentValues.get(i);
             int comparisonResult = comparator.compare(startValue, endValue);
