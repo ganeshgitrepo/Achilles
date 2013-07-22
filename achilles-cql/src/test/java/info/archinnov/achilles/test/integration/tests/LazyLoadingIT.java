@@ -1,12 +1,10 @@
 package info.archinnov.achilles.test.integration.tests;
 
-import static info.archinnov.achilles.common.ThriftCassandraDaoTest.getEntityDao;
-import static info.archinnov.achilles.table.TableNameNormalizer.normalizerAndValidateColumnFamilyName;
+import static info.archinnov.achilles.common.CQLCassandraDaoTest.truncateTable;
 import static org.fest.assertions.api.Assertions.assertThat;
-import info.archinnov.achilles.common.ThriftCassandraDaoTest;
-import info.archinnov.achilles.dao.ThriftGenericEntityDao;
-import info.archinnov.achilles.entity.manager.ThriftEntityManager;
-import info.archinnov.achilles.proxy.ThriftEntityInterceptor;
+import info.archinnov.achilles.common.CQLCassandraDaoTest;
+import info.archinnov.achilles.entity.manager.CQLEntityManager;
+import info.archinnov.achilles.proxy.CQLEntityInterceptor;
 import info.archinnov.achilles.test.integration.entity.CompleteBean;
 import info.archinnov.achilles.test.integration.entity.CompleteBeanTestBuilder;
 import net.sf.cglib.proxy.Factory;
@@ -22,10 +20,7 @@ import org.junit.Test;
  */
 public class LazyLoadingIT
 {
-    private ThriftEntityManager em = ThriftCassandraDaoTest.getEm();
-
-    private ThriftGenericEntityDao dao = getEntityDao(
-            normalizerAndValidateColumnFamilyName(CompleteBean.class.getName()), Long.class);
+    private CQLEntityManager em = CQLCassandraDaoTest.getEm();
 
     private CompleteBean bean;
 
@@ -50,7 +45,7 @@ public class LazyLoadingIT
         bean = em.find(CompleteBean.class, bean.getId());
 
         Factory proxy = (Factory) bean;
-        ThriftEntityInterceptor<?> interceptor = (ThriftEntityInterceptor<?>) proxy.getCallback(0);
+        CQLEntityInterceptor<?> interceptor = (CQLEntityInterceptor<?>) proxy.getCallback(0);
         CompleteBean trueBean = (CompleteBean) interceptor.getTarget();
 
         assertThat(trueBean.getLabel()).isNull();
@@ -77,6 +72,6 @@ public class LazyLoadingIT
     @After
     public void tearDown()
     {
-        dao.truncate();
+        truncateTable("CompleteBean");
     }
 }
