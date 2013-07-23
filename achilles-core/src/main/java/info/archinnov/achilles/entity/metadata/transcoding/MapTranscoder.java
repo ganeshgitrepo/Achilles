@@ -19,7 +19,7 @@ public class MapTranscoder extends AbstractTranscoder {
     }
 
     @Override
-    public Map<?, ?> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue) {
+    public Map<Object, Object> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue) {
         Map<Object, Object> encoded = new HashMap<Object, Object>();
         for (Entry<?, ?> entry : entityValue.entrySet())
         {
@@ -31,7 +31,7 @@ public class MapTranscoder extends AbstractTranscoder {
     }
 
     @Override
-    public Map<?, ?> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue) {
+    public Map<Object, Object> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue) {
         Map<Object, Object> decoded = new HashMap<Object, Object>();
         for (Entry<?, ?> entry : cassandraValue.entrySet())
         {

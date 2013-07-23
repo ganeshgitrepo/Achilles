@@ -16,24 +16,24 @@ public interface DataTranscoder {
     // Encode
     public Object encode(PropertyMeta<?, ?> pm, Object entityValue);
 
-    public List<?> encode(PropertyMeta<?, ?> pm, List<?> entityValue);
+    public List<Object> encode(PropertyMeta<?, ?> pm, List<?> entityValue);
 
-    public Set<?> encode(PropertyMeta<?, ?> pm, Set<?> entityValue);
+    public Set<Object> encode(PropertyMeta<?, ?> pm, Set<?> entityValue);
 
-    public Map<?, ?> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue);
+    public Map<Object, Object> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue);
 
-    public List<?> encodeToComponents(PropertyMeta<?, ?> pm, Object compoundKey);
+    public List<Object> encodeToComponents(PropertyMeta<?, ?> pm, Object compoundKey);
 
     public String forceEncodeToJSON(Object object);
 
     //Decode
     public Object decode(PropertyMeta<?, ?> pm, Object cassandraValue);
 
-    public List<?> decode(PropertyMeta<?, ?> pm, List<?> cassandraValue);
+    public List<Object> decode(PropertyMeta<?, ?> pm, List<?> cassandraValue);
 
-    public Set<?> decode(PropertyMeta<?, ?> pm, Set<?> cassandraValue);
+    public Set<Object> decode(PropertyMeta<?, ?> pm, Set<?> cassandraValue);
 
-    public Map<?, ?> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue);
+    public Map<Object, Object> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue);
 
     public Object decodeFromComponents(PropertyMeta<?, ?> pm, List<?> components);
 

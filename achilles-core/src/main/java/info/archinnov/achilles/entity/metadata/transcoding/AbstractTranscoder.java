@@ -31,25 +31,25 @@ public abstract class AbstractTranscoder implements DataTranscoder {
     }
 
     @Override
-    public List<?> encode(PropertyMeta<?, ?> pm, List<?> entityValue) {
+    public List<Object> encode(PropertyMeta<?, ?> pm, List<?> entityValue) {
         throw new AchillesException("Transcoder cannot encode value '" + entityValue
                 + "' for type '" + pm.type().name() + "'");
     }
 
     @Override
-    public Set<?> encode(PropertyMeta<?, ?> pm, Set<?> entityValue) {
+    public Set<Object> encode(PropertyMeta<?, ?> pm, Set<?> entityValue) {
         throw new AchillesException("Transcoder cannot encode value '" + entityValue
                 + "' for type '" + pm.type().name() + "'");
     }
 
     @Override
-    public Map<?, ?> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue) {
+    public Map<Object, Object> encode(PropertyMeta<?, ?> pm, Map<?, ?> entityValue) {
         throw new AchillesException("Transcoder cannot encode value '" + entityValue
                 + "' for type '" + pm.type().name() + "'");
     }
 
     @Override
-    public List<?> encodeToComponents(PropertyMeta<?, ?> pm, Object compoundKey)
+    public List<Object> encodeToComponents(PropertyMeta<?, ?> pm, Object compoundKey)
     {
         throw new AchillesException("Transcoder cannot encode from value '" + compoundKey
                 + "' to components for type '" + pm.type().name() + "'");
@@ -62,19 +62,19 @@ public abstract class AbstractTranscoder implements DataTranscoder {
     }
 
     @Override
-    public List<?> decode(PropertyMeta<?, ?> pm, List<?> cassandraValue) {
+    public List<Object> decode(PropertyMeta<?, ?> pm, List<?> cassandraValue) {
         throw new AchillesException("Transcoder cannot decode value '" + cassandraValue
                 + "' for type '" + pm.type().name() + "'");
     }
 
     @Override
-    public Set<?> decode(PropertyMeta<?, ?> pm, Set<?> cassandraValue) {
+    public Set<Object> decode(PropertyMeta<?, ?> pm, Set<?> cassandraValue) {
         throw new AchillesException("Transcoder cannot decode value '" + cassandraValue
                 + "' for type '" + pm.type().name() + "'");
     }
 
     @Override
-    public Map<?, ?> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue) {
+    public Map<Object, Object> decode(PropertyMeta<?, ?> pm, Map<?, ?> cassandraValue) {
         throw new AchillesException("Transcoder cannot decode value '" + cassandraValue
                 + "' for type '" + pm.type().name() + "'");
     }

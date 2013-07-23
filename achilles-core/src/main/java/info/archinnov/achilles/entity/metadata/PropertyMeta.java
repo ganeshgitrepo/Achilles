@@ -327,15 +327,15 @@ public class PropertyMeta<K, V>
         return cassandraValue == null ? null : transcoder.decode(this, cassandraValue);
     }
 
-    public List<?> decode(List<?> cassandraValue) {
+    public List<Object> decode(List<?> cassandraValue) {
         return cassandraValue == null ? null : transcoder.decode(this, cassandraValue);
     }
 
-    public Set<?> decode(Set<?> cassandraValue) {
+    public Set<Object> decode(Set<?> cassandraValue) {
         return cassandraValue == null ? null : transcoder.decode(this, cassandraValue);
     }
 
-    public Map<?, ?> decode(Map<?, ?> cassandraValue) {
+    public Map<Object, Object> decode(Map<?, ?> cassandraValue) {
         return cassandraValue == null ? null : transcoder.decode(this, cassandraValue);
     }
 
@@ -347,19 +347,19 @@ public class PropertyMeta<K, V>
         return entityValue == null ? null : transcoder.encode(this, entityValue);
     }
 
-    public List<?> encode(List<?> entityValue) {
+    public List<Object> encode(List<?> entityValue) {
         return entityValue == null ? null : transcoder.encode(this, entityValue);
     }
 
-    public Set<?> encode(Set<?> entityValue) {
+    public Set<Object> encode(Set<?> entityValue) {
         return entityValue == null ? null : transcoder.encode(this, entityValue);
     }
 
-    public Map<?, ?> encode(Map<?, ?> entityValue) {
+    public Map<Object, Object> encode(Map<?, ?> entityValue) {
         return entityValue == null ? null : transcoder.encode(this, entityValue);
     }
 
-    public List<?> encodeToComponents(Object compoundKey) {
+    public List<Object> encodeToComponents(Object compoundKey) {
         return compoundKey == null ? null : transcoder.encodeToComponents(this, compoundKey);
     }
 
