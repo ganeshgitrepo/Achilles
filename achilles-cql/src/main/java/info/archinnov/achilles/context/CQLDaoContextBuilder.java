@@ -2,8 +2,8 @@ package info.archinnov.achilles.context;
 
 import info.archinnov.achilles.counter.AchillesCounter.CQLQueryType;
 import info.archinnov.achilles.entity.metadata.EntityMeta;
-import info.archinnov.achilles.statement.CQLPreparedStatementGenerator;
 import info.archinnov.achilles.statement.cache.StatementCacheKey;
+import info.archinnov.achilles.statement.prepared.CQLPreparedStatementGenerator;
 import java.util.HashMap;
 import java.util.Map;
 import com.datastax.driver.core.PreparedStatement;

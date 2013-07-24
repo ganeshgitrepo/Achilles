@@ -7,6 +7,7 @@ import info.archinnov.achilles.entity.metadata.EntityMeta;
 import info.archinnov.achilles.entity.operations.EntityInitializer;
 import info.archinnov.achilles.entity.operations.EntityProxifier;
 import info.archinnov.achilles.entity.operations.EntityValidator;
+import info.archinnov.achilles.query.slice.SliceQueryBuilder;
 import info.archinnov.achilles.type.ConsistencyLevel;
 import info.archinnov.achilles.validation.Validator;
 import java.util.List;
@@ -545,6 +546,16 @@ public abstract class EntityManager<CONTEXT extends PersistenceContext> {
 
         return proxifier.unwrap(proxies);
     }
+
+    /**
+     * Create a new slice query builder for entity of type T<br/>
+     * <br/>
+     * 
+     * @param entityClass
+     *            Entity class
+     * @return SliceQueryBuilder<T>
+     */
+    public abstract <T> SliceQueryBuilder<CONTEXT, T> sliceQuery(Class<T> entityClass);
 
     protected abstract CONTEXT initPersistenceContext(Object entity, Optional<ConsistencyLevel> readLevelO,
             Optional<ConsistencyLevel> writeLevelO, Optional<Integer> ttl);

@@ -36,7 +36,7 @@ public class ThriftEntityManager extends EntityManager<ThriftPersistenceContext>
     private static final Logger log = LoggerFactory.getLogger(ThriftEntityManager.class);
 
     protected ThriftDaoContext thriftDaoContext;
-    private ThriftSliceQueryExecutor queryExecutor;
+    private ThriftSliceQueryExecutor sliceQueryExecutor;
     private ThriftCompoundKeyValidator compoundKeyValidator = new ThriftCompoundKeyValidator();
 
     ThriftEntityManager(EntityManagerFactory entityManagerFactory,
@@ -48,7 +48,7 @@ public class ThriftEntityManager extends EntityManager<ThriftPersistenceContext>
         this.thriftDaoContext = thriftDaoContext;
         super.proxifier = new ThriftEntityProxifier();
         super.entityValidator = new EntityValidator<ThriftPersistenceContext>(super.proxifier);
-        this.queryExecutor = new ThriftSliceQueryExecutor(configContext, thriftDaoContext, consistencyPolicy);
+        this.sliceQueryExecutor = new ThriftSliceQueryExecutor(configContext, thriftDaoContext);
     }
 
     /**
@@ -74,10 +74,12 @@ public class ThriftEntityManager extends EntityManager<ThriftPersistenceContext>
      *            Entity class
      * @return SliceQueryBuilder<T>
      */
+    @Override
     public <T> SliceQueryBuilder<ThriftPersistenceContext, T> sliceQuery(Class<T> entityClass)
     {
         EntityMeta meta = entityMetaMap.get(entityClass);
-        return new SliceQueryBuilder<ThriftPersistenceContext, T>(queryExecutor, compoundKeyValidator, entityClass,
+        return new SliceQueryBuilder<ThriftPersistenceContext, T>(sliceQueryExecutor, compoundKeyValidator,
+                entityClass,
                 meta);
     }
 
@@ -124,7 +126,7 @@ public class ThriftEntityManager extends EntityManager<ThriftPersistenceContext>
     }
 
     public void setQueryExecutor(ThriftSliceQueryExecutor queryExecutor) {
-        this.queryExecutor = queryExecutor;
+        this.sliceQueryExecutor = queryExecutor;
     }
 
     public void setCompoundKeyValidator(ThriftCompoundKeyValidator compoundKeyValidator) {
