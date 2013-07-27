@@ -27,11 +27,10 @@ public class CQLEntityManager extends EntityManager<CQLPersistenceContext>
     private CQLCompoundKeyValidator compoundKeyValidator = new CQLCompoundKeyValidator();
     private CQLSliceQueryExecutor sliceQueryExecutor;
 
-    protected CQLEntityManager(EntityManagerFactory entityManagerFactory,
-            Map<Class<?>, EntityMeta> entityMetaMap, //
+    protected CQLEntityManager(Map<Class<?>, EntityMeta> entityMetaMap, //
             ConfigurationContext configContext, CQLDaoContext daoContext)
     {
-        super(entityManagerFactory, entityMetaMap, configContext);
+        super(entityMetaMap, configContext);
         this.daoContext = daoContext;
         super.proxifier = new CQLEntityProxifier();
         super.entityValidator = new EntityValidator<CQLPersistenceContext>(proxifier);
@@ -42,8 +41,6 @@ public class CQLEntityManager extends EntityManager<CQLPersistenceContext>
     public <T> SliceQueryBuilder<CQLPersistenceContext, T> sliceQuery(Class<T> entityClass)
     {
         EntityMeta meta = entityMetaMap.get(entityClass);
-        ConsistencyLevel globalReadConsistencyLevel = configContext.getConsistencyPolicy()
-                .getDefaultGlobalReadConsistencyLevel();
         return new SliceQueryBuilder<CQLPersistenceContext, T>(sliceQueryExecutor, compoundKeyValidator, entityClass,
                 meta);
     }

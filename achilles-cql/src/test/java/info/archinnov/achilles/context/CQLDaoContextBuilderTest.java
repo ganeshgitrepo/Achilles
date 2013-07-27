@@ -73,7 +73,7 @@ public class CQLDaoContextBuilderTest
         when(queryGenerator.prepareRemovePSs(session, meta)).thenReturn(removePSs);
         when(queryGenerator.prepareSimpleCounterQueryMap(session)).thenReturn(counterQueryMap);
 
-        CQLDaoContext actual = builder.build(entityMetaMap);
+        CQLDaoContext actual = builder.build(entityMetaMap, true);
 
         assertThat(
                 (Map<Class<?>, PreparedStatement>) Whitebox.getInternalState(actual, "insertPSs"))

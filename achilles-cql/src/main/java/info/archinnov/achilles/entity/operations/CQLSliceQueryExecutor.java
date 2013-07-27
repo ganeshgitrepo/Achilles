@@ -88,11 +88,10 @@ public class CQLSliceQueryExecutor extends SliceQueryExecutor<CQLPersistenceCont
     @Override
     protected <T> CQLPersistenceContext buildContextForQuery(SliceQuery<T> sliceQuery)
     {
-        ConsistencyLevel consistencyLevel = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
+        ConsistencyLevel cl = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
                 .getConsistencyLevel();
         CQLImmediateFlushContext flushContext = new CQLImmediateFlushContext(daoContext,
-                Optional.fromNullable(consistencyLevel),
-                NO_CONSISTENCY_LEVEL, NO_TTL);
+                Optional.fromNullable(cl), Optional.fromNullable(cl), NO_TTL);
 
         Object partitionKey = sliceQuery.getPartitionKey();
         EntityMeta meta = sliceQuery.getMeta();
@@ -107,11 +106,9 @@ public class CQLSliceQueryExecutor extends SliceQueryExecutor<CQLPersistenceCont
     protected <T> CQLPersistenceContext buildNewContext(SliceQuery<T> sliceQuery, T clusteredEntity)
     {
         EntityMeta meta = sliceQuery.getMeta();
-        ConsistencyLevel consistencyLevel = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
-                .getConsistencyLevel();
         CQLImmediateFlushContext flushContext = new CQLImmediateFlushContext(daoContext,
-                Optional.fromNullable(consistencyLevel),
-                NO_CONSISTENCY_LEVEL, NO_TTL);
+                NO_CONSISTENCY_LEVEL, NO_CONSISTENCY_LEVEL, NO_TTL);
+
         return new CQLPersistenceContext(meta, configContext, daoContext, flushContext,
                 clusteredEntity, new HashSet<String>());
     }

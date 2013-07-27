@@ -80,7 +80,7 @@ public class CQLEntityManagerTest
         when(configContext.getConsistencyPolicy()).thenReturn(policy);
         when(policy.getDefaultGlobalReadConsistencyLevel()).thenReturn(ConsistencyLevel.EACH_QUORUM);
 
-        manager = new CQLEntityManager(factory, entityMetaMap, configContext, daoContext);
+        manager = new CQLEntityManager(entityMetaMap, configContext, daoContext);
         Whitebox.setInternalState(manager, CQLEntityProxifier.class, proxifier);
 
         manager.setEntityMetaMap(entityMetaMap);

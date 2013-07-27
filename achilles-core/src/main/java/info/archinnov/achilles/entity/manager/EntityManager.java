@@ -29,7 +29,6 @@ public abstract class EntityManager<CONTEXT extends PersistenceContext> {
 
     private static final Logger log = LoggerFactory.getLogger(EntityManager.class);
 
-    protected final EntityManagerFactory entityManagerFactory;
     protected Map<Class<?>, EntityMeta> entityMetaMap;
     protected AchillesConsistencyLevelPolicy consistencyPolicy;
     protected ConfigurationContext configContext;
@@ -38,9 +37,8 @@ public abstract class EntityManager<CONTEXT extends PersistenceContext> {
     protected EntityValidator<CONTEXT> entityValidator;
     protected EntityInitializer initializer = new EntityInitializer();
 
-    EntityManager(EntityManagerFactory entityManagerFactory, Map<Class<?>, EntityMeta> entityMetaMap, //
+    EntityManager(Map<Class<?>, EntityMeta> entityMetaMap, //
             ConfigurationContext configContext) {
-        this.entityManagerFactory = entityManagerFactory;
         this.entityMetaMap = entityMetaMap;
         this.configContext = configContext;
         this.consistencyPolicy = configContext.getConsistencyPolicy();

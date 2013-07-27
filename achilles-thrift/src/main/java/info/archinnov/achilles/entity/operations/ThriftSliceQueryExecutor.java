@@ -143,11 +143,11 @@ public class ThriftSliceQueryExecutor extends SliceQueryExecutor<ThriftPersisten
     @Override
     protected <T> ThriftPersistenceContext buildContextForQuery(SliceQuery<T> sliceQuery)
     {
-        ConsistencyLevel consistencyLevel = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
+        ConsistencyLevel cl = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
                 .getConsistencyLevel();
+
         ThriftImmediateFlushContext flushContext = new ThriftImmediateFlushContext(daoContext,
-                consistencyPolicy, Optional.fromNullable(consistencyLevel),
-                NO_CONSISTENCY_LEVEL, NO_TTL);
+                consistencyPolicy, Optional.fromNullable(cl), Optional.fromNullable(cl), NO_TTL);
 
         Object partitionKey = sliceQuery.getPartitionKey();
         EntityMeta meta = sliceQuery.getMeta();
@@ -162,11 +162,8 @@ public class ThriftSliceQueryExecutor extends SliceQueryExecutor<ThriftPersisten
     protected <T> ThriftPersistenceContext buildNewContext(final SliceQuery<T> sliceQuery, T clusteredEntity)
     {
         EntityMeta meta = sliceQuery.getMeta();
-        ConsistencyLevel consistencyLevel = sliceQuery.getConsistencyLevel() == null ? defaultReadLevel : sliceQuery
-                .getConsistencyLevel();
         ThriftImmediateFlushContext flushContext = new ThriftImmediateFlushContext(daoContext,
-                consistencyPolicy, Optional.fromNullable(consistencyLevel),
-                NO_CONSISTENCY_LEVEL, NO_TTL);
+                consistencyPolicy, NO_CONSISTENCY_LEVEL, NO_CONSISTENCY_LEVEL, NO_TTL);
 
         return new ThriftPersistenceContext(meta, configContext, daoContext, flushContext, clusteredEntity,
                 new HashSet<String>());
